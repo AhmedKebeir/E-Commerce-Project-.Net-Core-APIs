@@ -1,0 +1,13 @@
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+out/
+
+# Other
+*.vsidx
+*.log

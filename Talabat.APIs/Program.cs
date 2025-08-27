@@ -50,9 +50,9 @@ namespace Talabat.APIs
             {
                 var options = new ConfigurationOptions
                 {
-                    EndPoints = { { "redis-15578.c265.us-east-1-2.ec2.redns.redis-cloud.com", 15578 } },
-                    User = "default", // user الافتراضي
-                    Password = "RxQSknB01GWDIvd2GMZhos04P7nmey5R",
+                    EndPoints = { { "", 15578 } },
+                    User = "", // user الافتراضي
+                    Password = "",
                     
                 };
 

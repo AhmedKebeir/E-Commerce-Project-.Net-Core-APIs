@@ -1,4 +1,4 @@
-
+﻿
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +14,7 @@ using Talabat.Core.Repositories.Contract;
 using Talabat.Repository;
 using Talabat.Repository.Data;
 using Talabat.Repository.Identity;
+
 
 namespace Talabat.APIs
 {
@@ -45,11 +46,19 @@ namespace Talabat.APIs
                 options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
             });
 
-            builder.Services.AddSingleton<IConnectionMultiplexer>((serviceProvider) =>
+            builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
             {
-                var connection = builder.Configuration.GetConnectionString("Redis");
-                return ConnectionMultiplexer.Connect(connection);
+                var options = new ConfigurationOptions
+                {
+                    EndPoints = { { "redis-15578.c265.us-east-1-2.ec2.redns.redis-cloud.com", 15578 } },
+                    User = "default", // user الافتراضي
+                    Password = "RxQSknB01GWDIvd2GMZhos04P7nmey5R",
+                    
+                };
+
+                return ConnectionMultiplexer.Connect(options);
             });
+            
 
 
 
